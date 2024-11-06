@@ -1,0 +1,39 @@
+﻿@model BuildTrackSeven.ViewModels.LoginVM;
+
+@* @{
+    Layout = null;
+} *@
+
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <div class="row mt-5 justify-content-center">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                    Inicio de Sesion
+                </div>
+            </div>
+            <div class="card-body">
+                <form asp-controller="Acceso" asp-action="Login" method="post">
+                    <input class="form-control mb-3" type="text" placeholder="Nombre de Usuario" required asp-for="Nusuario"/>
+                    <input class="form-control mb-3" type="password" placeholder="Contraseña" required asp-for="Contrasenia" />
+                    <div class="d-grid gap-2 mb-3">
+                        <button class="btn btn-primary" type="submit">Inicia Sesion</button>
+                    </div>
+
+                    @if (ViewData ["Mensaje"] != null)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @ViewData["Mensaje"]
+                        </div>
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

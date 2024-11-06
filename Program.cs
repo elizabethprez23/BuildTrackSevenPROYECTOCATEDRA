@@ -1,3 +1,6 @@
+using BuildTrackSeven.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace BuildTrackSeven
 {
     public class Program
@@ -8,6 +11,12 @@ namespace BuildTrackSeven
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            //Se configura el contexto de EntityFramework para definir SQL server como proveedor de base de datos
+            builder.Services.AddDbContext<AppDBContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("CadenaConexion"));
+            });
 
             var app = builder.Build();
 
